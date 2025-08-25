@@ -1,28 +1,33 @@
+// Core styles
 .cv-modal {
-  .MuiDialog-paper {
-    width: 80%;
-    height: 100%;
-    max-width: 100%;
-    margin: 0;
-    border-radius: 0;
-    overflow: hidden;
-    background: #fdfdfd;
+  .MuiBackdrop-root {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   }
 
-  /* Header Styling */
-  .cv-modal-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 0 24px;
-    background: linear-gradient(135deg, #2c3e50, #3498db);
-    color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 5;
-    height: 80px;
+  .MuiDialog-container {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .MuiDialog-paper {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: modalFadeIn 0.3s ease-out;
+  }
+
+  // Header styles
+  .modal-header {
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #2a2a3e, #1e1e2e);
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 
     .header-content {
       width: 100%;
@@ -34,64 +39,255 @@
     }
 
     .header-left {
-      .cv-title {
+      h3 {
+        margin: 0;
         font-size: 1.5rem;
         font-weight: 600;
-        margin: 0;
-        color: white;
+        color: #fff;
+        letter-spacing: 0.3px;
       }
 
       .cv-subtitle {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        margin-top: 2px;
-        color: rgba(255,255,255,0.9);
+        font-size: 0.85rem;
+        opacity: 0.8;
+        margin-top: 0.25rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 400;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .download-button {
+      background: linear-gradient(135deg, #4a6cf7, #6c5bff);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(74, 108, 247, 0.2);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(74, 108, 247, 0.3);
+        background: linear-gradient(135deg, #3a5ce5, #5b4aff);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
 
     .close-button {
-      color: white;
-      background: rgba(255,255,255,0.2);
-      transition: all 0.3s ease;
-      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.08);
       width: 36px;
       height: 36px;
-
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      
       &:hover {
-        background: rgba(255,255,255,0.3);
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
         transform: rotate(90deg);
       }
     }
   }
 
-  /* PDF Fullscreen */
-  .cv-modal-content {
-    padding: 0;
-    margin-top: 80px; /* Match header height */
-    height: calc(100vh - 80px);
-    overflow: auto;
+  // Main content area
+  .cv-image-container {
+    flex: 1;
+    padding: 2rem;
+    background: #f8f9ff;
+    overflow: hidden; /* Changed from auto to hidden to prevent double scrollbars */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
 
-    .cv-pdf {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      background: linear-gradient(to bottom, #1e1e2e 0%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cv-image-wrapper {
       width: 100%;
       height: 100%;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: auto; /* Changed from hidden to auto to allow scrolling if needed */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    .cv-image {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      object-fit: contain;
+    }
+
+    .bottom-download-button {
+      background: linear-gradient(135deg, #4a6cf7, #6c5bff);
+      color: white;
       border: none;
-      background: #fafafa;
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.05);
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(74, 108, 247, 0.25);
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #3a5ce5, #5b4aff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: -1;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(74, 108, 247, 0.35);
+        
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      svg {
+        font-size: 1.1em;
+      }
     }
   }
 
-  /* Floating Button */
-  .download-fab {
-    position: absolute;
-    bottom: 24px;
-    right: 24px;
-    background: linear-gradient(135deg, #1976d2, #42a5f5);
-    color: #fff;
-    box-shadow: 0 4px 14px rgba(25,118,210,0.4);
+  // Animations
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-    &:hover {
-      background: linear-gradient(135deg, #1565c0, #1e88e5);
-      box-shadow: 0 6px 20px rgba(25,118,210,0.5);
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .MuiDialog-container {
+      padding: 0.5rem;
+      align-items: center;
+    }
+
+    .MuiDialog-paper {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      border-radius: 12px !important;
+    }
+
+    .modal-header {
+      padding: 1rem 1.25rem;
+
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .download-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    .cv-image-container {
+      padding: 1.25rem;
+      gap: 1.25rem;
+
+      .cv-image-wrapper {
+        padding: 0.75rem;
+        border-radius: 10px;
+      }
+
+      .bottom-download-button {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modal-header {
+      .header-left {
+        h3 {
+          font-size: 1.25rem;
+        }
+        
+        .cv-subtitle {
+          font-size: 0.8rem;
+        }
+      }
     }
   }
 }

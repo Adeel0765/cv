@@ -17,11 +17,9 @@ function CertificateModal({ open, onClose, imageUrl, title }: CertificateModalPr
     <Dialog 
       open={open} 
       onClose={onClose}
-      maxWidth="md"
-      fullWidth
       className="certificate-modal"
     >
-      <IconButton
+      {/* <IconButton
         aria-label="close"
         onClick={onClose}
         sx={{
@@ -32,9 +30,9 @@ function CertificateModal({ open, onClose, imageUrl, title }: CertificateModalPr
         }}
       >
         <CloseIcon />
-      </IconButton>
+      </IconButton> */}
       <DialogContent className="certificate-content">
-        <h2>{title} - Certificate</h2>
+        {/* <h2>{title} - Certificate</h2> */}
         <div className="image-container">
           <img 
             src={imageUrl} 

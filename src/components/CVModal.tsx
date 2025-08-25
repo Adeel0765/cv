@@ -1,6 +1,6 @@
 import React from 'react';
-import { Dialog, DialogContent, IconButton, Fab, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Dialog, IconButton } from '@mui/material';
+import Close from '@mui/icons-material/Close';
 import DownloadIcon from '@mui/icons-material/Download';
 import '../assets/styles/CVModal.scss';
 
@@ -12,60 +12,60 @@ interface CVModalProps {
 }
 
 const CVModal: React.FC<CVModalProps> = ({ open, onClose }) => {
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = CV_PDF_PATH;
-    link.download = 'Rehan_Cheema_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <Dialog 
       open={open} 
       onClose={onClose}
-      fullScreen
       className="cv-modal"
+      PaperProps={{
+        style: {
+          margin: '5px',
+          maxWidth: '800px',
+          maxHeight: '90vh',
+          borderRadius: '20px',
+          overflow: 'hidden',
+          background: '#1e1e2e',
+          boxShadow: '0 15px 60px rgba(0,0,0,0.4)',
+          border: '1px solid rgba(255,255,255,0.05)'
+        }
+      }}
     >
-      {/* Header */}
-      <div className="cv-modal-header">
+      <div className="modal-header">
         <div className="header-content">
           <div className="header-left">
-            <Typography variant="h5" className="cv-title">My Curriculum Vitae</Typography>
-            <Typography variant="subtitle2" className="cv-subtitle">Professional Overview</Typography>
+            <h3>My Professional CV</h3>
           </div>
           <div className="header-actions">
             <IconButton 
-              aria-label="close" 
+              className="close-button" 
               onClick={onClose}
-              className="close-button"
-              size="small"
+              aria-label="close"
             >
-              <CloseIcon />
+              <Close />
             </IconButton>
           </div>
         </div>
       </div>
-
-      {/* Content */}
-      <DialogContent className="cv-modal-content">
-        <iframe 
-          src={`${process.env.PUBLIC_URL}${CV_PDF_PATH}#view=FitH`}
-          title="Rehan Cheema's CV"
-          className="cv-pdf"
-        />
-      </DialogContent>
-
-      {/* Floating Download Button */}
-      <Fab 
-        color="primary" 
-        aria-label="download" 
-        className="download-fab"
-        onClick={handleDownload}
-      >
-        <DownloadIcon />
-      </Fab>
+      
+      <div className="cv-image-container">
+        <div className="cv-image-wrapper">
+          <img 
+            src={`${process.env.PUBLIC_URL}/cv/cv-image.png`}
+            alt="Rehan Cheema's CV"
+            className="cv-image"
+            loading="lazy"
+          />
+        </div>
+        
+        <a 
+          href={`${process.env.PUBLIC_URL}${CV_PDF_PATH}`} 
+          download="Rehan_Cheema_CV.pdf"
+          className="bottom-download-button"
+        >
+          <DownloadIcon fontSize="small" />
+          <span>Download My CV</span>
+        </a>
+      </div>
     </Dialog>
   );
 };

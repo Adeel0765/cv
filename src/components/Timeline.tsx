@@ -7,6 +7,10 @@ import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss';
 import CertificateModal from '../components/CertificateModal.tsx';
 
+// Import certificate images
+import teamXaiCertificate from '../assets/images/TeamXAI.jpg';
+import fullStackZoneCertificate from '../assets/images/FullStackZone.jpg';
+
 interface TimelineItem {
   id: string;
   title: string;
@@ -33,7 +37,7 @@ function Timeline({ mode }: TimelineProps) {
       company: 'TeamXAI (Remote)',
       date: 'Jul 2024 - Jul 2025',
       description: 'Collaborated on React.js projects with a focus on reusable components. Integrated REST APIs and improved component-level performance.',
-      certificateUrl: 'src/assets/images/TeamXAI.jpg'
+      certificateUrl: teamXaiCertificate
     },
     {
       id: 'qfinity',
@@ -49,7 +53,7 @@ function Timeline({ mode }: TimelineProps) {
       company: 'Full Stack Zone, Islamabad, Pakistan',
       date: 'Jan 2025 - Mar 2025',
       description: 'Developed responsive web apps using HTML5, CSS3, JS, and React.js. Improved UI/UX and optimized performance.',
-      certificateUrl: 'src/assets/images/FullStackZone.jpg'
+      certificateUrl: fullStackZoneCertificate
     },
     {
       id: 'ajk-itboard',
