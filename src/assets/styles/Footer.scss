@@ -1,0 +1,126 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid #0084ff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), transparent);
+    transform: skewX(-20deg);
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-title {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #005cbf;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-link {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+      background: #0084ff;
+      color: white;
+      transform: translateY(-5px) scale(1.1);
+      border-color: #0084ff;
+      box-shadow: 0 8px 20px rgba(0, 132, 255, 0.4);
+    }
+
+    .social-icon {
+      font-size: 1.8rem;
+    }
+  }
+
+  .footer-copyright {
+    text-align: right;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 3rem;
+
+    @media (max-width: 900px) {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  }
+
+  .copyright-text {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .credit-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+  }
+
+  /* Light theme styles */
+  &.light-mode {
+    background-color: #f0f2f5;
+    color: #333333;
+    border-top-color: #005cbf;
+
+    &::before {
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.03), transparent);
+    }
+
+    .footer-title {
+      color: #005cbf;
+    }
+
+    .social-link {
+      color: #333333;
+      border-color: #333333;
+
+      &:hover {
+        background: #005cbf;
+        border-color: #005cbf;
+        color: white;
+      }
+    }
+
+    .footer-copyright {
+      border-top-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .copyright-text {
+      color: #555555;
+    }
+
+    .credit-text {
+      color: #777777;
+    }
+  }
+}

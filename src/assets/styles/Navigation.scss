@@ -1,0 +1,157 @@
+.navbar-fixed-top {
+  background: transparent !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease-in-out;
+  padding: 1rem 0;
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    padding: 0.5rem 0;
+  }
+
+  .navigation-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .MuiButton-root {
+      color: #ffffff;
+      font-weight: 500;
+      text-transform: none;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      position: relative;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #0084ff;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        &::after {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  .MuiIconButton-root {
+    color: #fff;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Mobile menu styles
+.navigation-bar-responsive {
+  background: #1a1a1a;
+  height: 100%;
+  color: #fff;
+  padding: 1rem;
+
+  .mobile-menu-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .MuiListItemButton-root {
+    color: #fff;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin: 0.25rem 0;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .MuiDivider-root {
+    border-color: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+  }
+}
+
+// Theme toggle button styles
+.theme-toggle-button {
+  border: 2px solid #ffffff;
+  width: 44px;
+  height: 44px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  svg {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background: #0084ff;
+    transform: translateY(-3px) scale(1.05);
+    border-color: #0084ff;
+    box-shadow: 0 6px 15px rgba(0, 132, 255, 0.3);
+
+    svg {
+      color: white;
+    }
+  }
+}
+
+.light-mode .theme-toggle-button {
+  border-color: #333333;
+
+  svg {
+    color: #333333;
+  }
+
+  &:hover {
+    background: #005cbf;
+    border-color: #005cbf;
+
+    svg {
+      color: white;
+    }
+  }
+}
+
+// Dark/Light mode toggle
+[data-theme='light'] {
+  .navbar-fixed-top {
+    .MuiButton-root {
+      color: #2c3e50;
+      
+      &:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+    }
+
+    .MuiIconButton-root {
+      color: #2c3e50;
+    }
+  }
+}

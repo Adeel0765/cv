@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import {
+  Main,
+  Timeline,
+  Expertise,
+  Project,
+  Contact,
+  Navigation,
+  Footer,
+} from "./components";
+import FadeIn from './components/FadeIn.tsx';
+import './index.scss';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    const [mode, setMode] = useState('dark');
+
+    const handleModeChange = () => {
+        if (mode === 'dark') {
+            setMode('light');
+        } else {
+            setMode('dark');
+        }
+    }
+
+    useEffect(() => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
+
+    return (
+    <div className={`main-container ${mode === 'dark' ? 'dark-mode' : 'light-mode'}`}>
+        <Navigation parentToChild={{mode}} modeChange={handleModeChange}/>
+        <FadeIn transitionDuration={700}>
+            <Main/>
+            <Expertise/>
+            <Timeline mode={mode}/>
+            <Project/>
+            <Contact mode={mode} />
+        </FadeIn>
+        <Footer mode={mode} />
     </div>
-  );
+    );
 }
 
 export default App;
