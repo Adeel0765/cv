@@ -1,9 +1,74 @@
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .dark-mode .about-section {
     background-color: rgba(0, 0, 0, 0.2);
+    
+    &.animate-in {
+        animation: fadeIn 0.8s ease-out;
+    }
 }
 
 .light-mode .about-section {
     background-image: url("../images/bg-light.png");
+    
+    &.animate-in {
+        animation: fadeIn 0.8s ease-out;
+    }
 
     .content {
         h1,
@@ -32,7 +97,7 @@
     align-items: center;
     width: 100%;
     padding: 0px 15%;
-    min-height: 700px;
+    min-height: 100vh;
     background-image: url("../images/bg-dark.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -59,7 +124,7 @@
             align-items: center;
             justify-content: center;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-
+            
             &:hover {
                 background: #0084ff;
                 color: white;
@@ -93,9 +158,25 @@
 
 .about-section .image-wrapper {
     z-index: 2;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    
+    &:hover {
+        transform: scale(1.05) rotateY(5deg);
+        img {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+    }
+    
     img {
-        width: 150px;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
         border-radius: 50%;
+        border: 4px solid #0084ff;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
     }
 }
 
