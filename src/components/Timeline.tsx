@@ -45,7 +45,7 @@ function Timeline({ mode }: TimelineProps) {
       company: 'Qfinity (Remote)',
       date: 'Apr 2025 - Jun 2025',
       description: 'Built cross-platform mobile applications using React Native and TypeScript.',
-      certificateUrl: '/certificates/qfinity-certificate.jpg'
+      // certificateUrl: '/certificates/qfinity-certificate.jpg'
     },
     {
       id: 'fullstack-zone',
@@ -61,7 +61,7 @@ function Timeline({ mode }: TimelineProps) {
       company: 'AJK ITBoard, Muzaffarabad, Pakistan',
       date: 'Jul 2024 - Sep 2024',
       description: 'Built interactive UIs with React.js and Bootstrap. Integrated APIs and enhanced existing web designs.',
-      certificateUrl: '/certificates/ajk-itboard-certificate.jpg'
+      // certificateUrl: '/certificates/ajk-itboard-certificate.jpg'
     }
   ];
 
