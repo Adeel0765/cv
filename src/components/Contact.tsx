@@ -31,7 +31,7 @@ const Contact = ({ mode }: ContactProps) => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name as keyof typeof errors]) {
       setErrors(prev => ({
@@ -47,28 +47,28 @@ const Contact = ({ mode }: ContactProps) => {
       email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email),
       message: formData.message.trim() === ''
     };
-    
+
     setErrors(newErrors);
     return !Object.values(newErrors).some(error => error);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsSubmitting(true);
-    
+
     try {
       // Replace with your form submission logic
       // await emailjs.send(...);
       console.log('Form submitted:', formData);
-      
+
       // Reset form
       setFormData({ name: '', email: '', message: '' });
-      
+
       // Show success message
       alert('Thank you for your message! I will get back to you soon.');
     } catch (error) {
@@ -81,7 +81,7 @@ const Contact = ({ mode }: ContactProps) => {
 
   return (
     <section id="contact" className={`contact-section ${mode === 'light' ? 'light-mode' : ''}`}>
-      <motion.div 
+      <motion.div
         className="contact-container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -91,9 +91,9 @@ const Contact = ({ mode }: ContactProps) => {
           <h2>Get In Touch</h2>
           <p className="subtitle">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
         </div>
-        
+
         <div className="contact-content">
-          <motion.div 
+          <motion.div
             className="contact-info"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -101,21 +101,21 @@ const Contact = ({ mode }: ContactProps) => {
           >
             <h3>Contact Information</h3>
             <p>Feel free to reach out through any of these platforms:</p>
-            
+
             <div className="contact-methods">
               <a href="mailto:rehancheemaa@gmail.com" className="contact-method">
-                <FaEnvelope className="contact-icon" />
+                {<FaEnvelope className="contact-icon" /> as any}
               </a>
               <a href="https://github.com/Rehancheemaa" target="_blank" rel="noopener noreferrer" className="contact-method">
-                <FaGithub className="contact-icon" />
+                {<FaGithub className="contact-icon" /> as any}
               </a>
               <a href="https://www.linkedin.com/in/rehan-cheemaa/" target="_blank" rel="noopener noreferrer" className="contact-method">
-                <FaLinkedin className="contact-icon" />
+                {<FaLinkedin className="contact-icon" /> as any}
               </a>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="contact-form-container"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -136,7 +136,7 @@ const Contact = ({ mode }: ContactProps) => {
                   className="form-input"
                 />
               </div>
-              
+
               <div className="form-group">
                 <TextField
                   fullWidth
@@ -151,7 +151,7 @@ const Contact = ({ mode }: ContactProps) => {
                   className="form-input"
                 />
               </div>
-              
+
               <div className="form-group">
                 <TextField
                   fullWidth
@@ -167,7 +167,7 @@ const Contact = ({ mode }: ContactProps) => {
                   className="form-input"
                 />
               </div>
-              
+
               <Button
                 type="submit"
                 variant="contained"
