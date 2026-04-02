@@ -5,7 +5,7 @@ import { faBriefcase, faCertificate } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import '../assets/styles/Timeline.scss';
-import CertificateModal from '../components/CertificateModal.tsx';
+import CertificateModal from '../components/CertificateModal';
 
 // Import certificate images
 import teamXaiCertificate from '../assets/images/TeamXAI.jpg';

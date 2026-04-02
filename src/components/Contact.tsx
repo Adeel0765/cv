@@ -11,6 +11,9 @@ interface ContactProps {
 }
 
 const Contact = ({ mode }: ContactProps) => {
+  const EnvelopeIcon = FaEnvelope as React.ElementType;
+  const GithubIcon = FaGithub as React.ElementType;
+  const LinkedinIcon = FaLinkedin as React.ElementType;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -104,13 +107,13 @@ const Contact = ({ mode }: ContactProps) => {
 
             <div className="contact-methods">
               <a href="mailto:rehancheemaa@gmail.com" className="contact-method">
-                {<FaEnvelope className="contact-icon" /> as any}
+                <EnvelopeIcon className="contact-icon" />
               </a>
               <a href="https://github.com/Rehancheemaa" target="_blank" rel="noopener noreferrer" className="contact-method">
-                {<FaGithub className="contact-icon" /> as any}
+                <GithubIcon className="contact-icon" />
               </a>
               <a href="https://www.linkedin.com/in/rehan-cheemaa/" target="_blank" rel="noopener noreferrer" className="contact-method">
-                {<FaLinkedin className="contact-icon" /> as any}
+                <LinkedinIcon className="contact-icon" />
               </a>
             </div>
           </motion.div>

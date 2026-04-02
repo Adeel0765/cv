@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import DescriptionIcon from '@mui/icons-material/Description';
-import CVModal from './CVModal.tsx';
+import CVModal from './CVModal';
 import '../assets/styles/Main.scss';
 import ProfileImage from '../assets/images/rehancheema.jpg';
 
