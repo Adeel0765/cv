@@ -33,26 +33,18 @@ function Timeline({ mode }: TimelineProps) {
   const timelineData: TimelineItem[] = [
     {
       id: 'teamxai',
-      title: 'Junior React Developer',
+      title: 'Junior React Native Developer',
       company: 'TeamXAI (Remote)',
-      date: 'Jul 2024 - Jul 2025',
-      description: 'Collaborated on React.js projects with a focus on reusable components. Integrated REST APIs and improved component-level performance.',
+      date: 'Feb 2025 - Present',
+      description: 'Built and maintained React Native apps with reusable components, integrated APIs, fixed bugs, and delivered features including real-time chat, push notifications, audio recording/playback, and event management flows.',
       certificateUrl: teamXaiCertificate
     },
     {
-      id: 'qfinity',
-      title: 'Junior React Native Developer',
-      company: 'Qfinity (Remote)',
-      date: 'Apr 2025 - Jun 2025',
-      description: 'Built cross-platform mobile applications using React Native and TypeScript.',
-      // certificateUrl: '/certificates/qfinity-certificate.jpg'
-    },
-    {
       id: 'fullstack-zone',
-      title: 'Web Developer Intern',
+      title: 'Web Developer (Intern)',
       company: 'Full Stack Zone, Islamabad, Pakistan',
-      date: 'Jan 2025 - Mar 2025',
-      description: 'Developed responsive web apps using HTML5, CSS3, JS, and React.js. Improved UI/UX and optimized performance.',
+      date: 'Dec 2024 - Feb 2025',
+      description: 'Created responsive web pages using HTML, CSS, JavaScript, and React.js, improved UI/UX, added new features, fixed bugs, and connected applications with APIs to display live data.',
       certificateUrl: fullStackZoneCertificate
     },
     {
@@ -60,7 +52,15 @@ function Timeline({ mode }: TimelineProps) {
       title: 'Frontend Developer Intern',
       company: 'AJK ITBoard, Muzaffarabad, Pakistan',
       date: 'Jul 2024 - Sep 2024',
-      description: 'Built interactive UIs with React.js and Bootstrap. Integrated APIs and enhanced existing web designs.',
+      description: 'Built interactive and responsive user interfaces using React.js and Bootstrap, integrated RESTful APIs, improved performance, and collaborated on clean, maintainable frontend code.',
+      // certificateUrl: '/certificates/ajk-itboard-certificate.jpg'
+    },
+    {
+      id: 'softaxus',
+      title: 'Frontend Developer (Intern)',
+      company: 'Softaxus, Islamabad, Pakistan',
+      date: 'Jul 2021 - Sep 2021',
+      description: 'Developed dynamic React.js interfaces with reusable components and hooks, improved load speed and cross-browser compatibility, and assisted with API integration for real-time data updates.',
       // certificateUrl: '/certificates/ajk-itboard-certificate.jpg'
     }
   ];

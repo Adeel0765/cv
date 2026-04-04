@@ -131,25 +131,54 @@
   }
 
   .MuiFilledInput-root {
-    background-color: rgba(160, 140, 140, 0.05) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
     border-radius: 8px 8px 0 0 !important;
-    border: 1px solid #000000;
-
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffffff !important;
 
     &:before, &:after {
       display: none; // Hide the default underline
     }
 
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+      color: #000000 !important;
+    }
+
     &.Mui-focused {
-      background-color: rgba(255, 255, 255,) !important;
+      background-color: rgba(255, 255, 255, 0.12) !important;
+      border-color: #4da3ff;
+      box-shadow: 0 0 0 1px rgba(77, 163, 255, 0.35);
+    }
+
+    input,
+    textarea {
+      color: #ffffff !important;
     }
   }
 
   .MuiInputLabel-root {
-    color: #4a5568 !important;
-    &.Mui-focused {
-      color: #0084ff !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+
+    &:hover {
+      color: #ffffff !important;
     }
+
+    &.MuiInputLabel-shrink {
+      color: #ffffff !important;
+    }
+
+    &.Mui-focused {
+      color: #ffffff !important;
+    }
+  }
+
+  .MuiFormHelperText-root {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .MuiFormHelperText-root.Mui-error {
+    color: #ffb4b4 !important;
   }
 
   .submit-btn {
@@ -171,5 +200,19 @@
       background-color: #a0aec0;
       cursor: not-allowed;
     }
+  }
+
+  .form-status {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .form-status.success {
+    color: #1f9d55;
+  }
+
+  .form-status.error {
+    color: #e53e3e;
   }
 }

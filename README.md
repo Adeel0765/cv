@@ -5,6 +5,24 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ![screenshot](./src/assets//images/screenshot.png)
 
+## EmailJS Setup
+
+The contact form uses EmailJS to send messages directly from the site.
+
+1. Copy `.env.example` to `.env`
+2. Add your EmailJS values for:
+   `REACT_APP_EMAILJS_SERVICE_ID`
+   `REACT_APP_EMAILJS_TEMPLATE_ID`
+   `REACT_APP_EMAILJS_PUBLIC_KEY`
+3. In your EmailJS template, use these variables:
+   `{{to_email}}`
+   `{{from_name}}`
+   `{{from_email}}`
+   `{{message}}`
+   `{{reply_to}}`
+
+The form sends to `rehancheemaa@gmail.com`.
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import emailjs from 'emailjs-com';
 
 interface ContactProps {
   mode: string;
@@ -27,6 +28,13 @@ const Contact = ({ mode }: ContactProps) => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
+  const emailJsServiceId = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const emailJsTemplateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  const emailJsPublicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -41,6 +49,10 @@ const Contact = ({ mode }: ContactProps) => {
         ...prev,
         [name]: false
       }));
+    }
+
+    if (submissionStatus) {
+      setSubmissionStatus(null);
     }
   };
 
@@ -65,18 +77,34 @@ const Contact = ({ mode }: ContactProps) => {
     setIsSubmitting(true);
 
     try {
-      // Replace with your form submission logic
-      // await emailjs.send(...);
-      console.log('Form submitted:', formData);
+      if (!emailJsServiceId || !emailJsTemplateId || !emailJsPublicKey) {
+        throw new Error('EmailJS is not configured');
+      }
 
-      // Reset form
+      await emailjs.send(
+        emailJsServiceId,
+        emailJsTemplateId,
+        {
+          to_email: 'rehancheemaa@gmail.com',
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          reply_to: formData.email
+        },
+        emailJsPublicKey
+      );
+
       setFormData({ name: '', email: '', message: '' });
-
-      // Show success message
-      alert('Thank you for your message! I will get back to you soon.');
+      setSubmissionStatus({
+        type: 'success',
+        message: 'Your message was sent successfully to rehancheemaa@gmail.com.'
+      });
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('There was an error sending your message. Please try again later.');
+      setSubmissionStatus({
+        type: 'error',
+        message: 'Email sending is not configured correctly or failed. Add your EmailJS keys and try again.'
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -182,6 +210,12 @@ const Contact = ({ mode }: ContactProps) => {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
+
+              {submissionStatus && (
+                <p className={`form-status ${submissionStatus.type}`} role="status">
+                  {submissionStatus.message}
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
