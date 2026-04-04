@@ -32,8 +32,8 @@ function Main() {
         </div>
         <div className="content">
           <div className={`social_icons ${isMounted ? 'animate-in' : ''}`}>
-            <a href="https://www.linkedin.com/in/rehan-cheemaa/" target="_blank" rel="noreferrer"><GitHubIcon/></a>
-            <a href="https://github.com/Rehancheemaa" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
+            <a href="https://github.com/Rehancheemaa" target="_blank" rel="noreferrer"><GitHubIcon/></a>
+            <a href="https://www.linkedin.com/in/rehan-cheemaa/" target="_blank" rel="noreferrer"><LinkedInIcon/></a>
             <a href="#" onClick={handleCVClick}><DescriptionIcon/></a>
           </div>
           <h1 className={isMounted ? 'animate-in' : ''}>Rehan Cheema</h1>
